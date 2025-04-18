@@ -59,7 +59,7 @@ log = logging.getLogger(__name__)
 log.setLevel(logging.ERROR)
 
 def enable_logging():
-    out_hdlr = logging.FileHandler('leetcode-vim.log')
+    out_hdlr = logging.FileHandler('/tmp/leetcode-vim.log')
     out_hdlr.setFormatter(logging.Formatter('%(asctime)s %(message)s'))
     out_hdlr.setLevel(logging.INFO)
     log.addHandler(out_hdlr)
@@ -501,6 +501,8 @@ def get_submission(sid):
     if res.status_code != 200:
         _echoerr('cannot find the submission: ' + sid)
         return None
+    # TODO: some error in this function.
+    return []
 
     # we need to parse the data from the Javascript snippet
     s = res.text
